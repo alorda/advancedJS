@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSONP - Yahoo! Query Language</title>
+<script type="text/javascript">
+	function displayStates(data) {
+		var content = document.getElementById('content');
+		content.innerHTML = '';
+		var results = data.query.results.place;
+		for(i=0; i<results.length;i++) {
+			place = results[i];
+			content.innerHTML += '<p>' + place.placeTypeName.content + ': ' + place.name + '</p>';
+		}
+	}
+
+	function requestJSONP(url) {
+		var script = document.createElement('script');
+		script.src = url;
+		script.onload = function () {
+			this.remove();
+		};
+		document.head.appendChild(script);
+	}
+
+	window.onload = function() {
+
+		var btn = document.getElementById('btn');
+
+		btn.addEventListener('click', function(e) {
+			var place = document.getElementById('place').value;
+			var script = document.createElement('script');
+			var url = "http://query.yahooapis.com/v1/public/yql?format=json&q=select+*+from+geo.states+where+place='"+place+"'&callback=displayStates"
+			requestJSONP(url);
+		});
+	}
+</script>
+</head>
+<body>
+	<input type="text" id="place" placeholder="place">
+	<button id="btn">Go</button>
+	<div id="content"></div>
+</body>
+</html>
