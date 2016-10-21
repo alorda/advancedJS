@@ -5,14 +5,18 @@
 <title>Inner Functions</title>
 <script type="text/javascript">
 	var values = [5, 2, 11, -7, 1];
-		
+
 	function combineAll(nums, initialValue, operator) {
 		var runningResult = initialValue;
 		for (var i=0; i < nums.length; i++) {
-			runningResult = calculate(nums[i]); 
+			runningResult = calculate(nums[i]);
 		}
 		return runningResult;
-		
+
+
+		// calculate is being invoked on line 12
+		// runs repeatedly while the 'for' loop is going
+		// then the return.
 		function calculate(num) {
 			switch (operator.toLowerCase()) {
 				case "+" :
@@ -26,17 +30,17 @@
 			}
 		}
 	}
-		
+
 	var sum = combineAll(values, 0, "+");
 	var product = combineAll(values, 1, "x");
 	var list = combineAll(values, 1, "a");
-			
+
 	alert("Sum: " + sum);
 	alert("Product: " + product);
 	alert("Number List: " + list);
 </script>
 </head>
 <body>
-<p>Nothing to show here.</p>	
+<p>Nothing to show here.</p>
 </body>
 </html>
