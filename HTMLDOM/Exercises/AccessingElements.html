@@ -93,9 +93,15 @@
 	function weekDays() {
 		var weekDays;
 		if ( document.querySelectorAll ) {
-			//add code
+			weekDays = document.querySelectorAll("td:not(.weekend)");
 		} else {
-			//add code
+			var calendar = document.getElementById("calendar");
+			var days = calendar.getElementsByTagName("td");
+			for (var i = 0; i < days.length; i++) {
+				if (!hasClassName(days[i], "weekend")) {
+					weekDays.push(days[i]);
+				}
+			}
 		}
 		unhighlightDays();
 		highlight(weekDays);
@@ -172,6 +178,7 @@
 	<li class="clickable" onclick="weekDays();">Weekdays</li>
 	<li class="clickable" onclick="weekDaysThisMonth();">Weekdays This Month</li>
 	<li class="clickable" onclick="firstDayOfMonth();">First Day of This Month</li>
+	<li class="clickable" onclick="unhighlightDays();">Remove all highlights from dates</li>
 </ul>
 </ol>
 </body>
