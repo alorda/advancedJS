@@ -70,11 +70,23 @@
 	function allDays() {
 		var calendar = document.getElementById("calendar");
 		var allDays = calendar.getElementsByTagName("td");
+		console.log("allDays array: ", allDays);
 		highlight(allDays);
 		return allDays;
 	}
 
 	function firstDayOfMonth() {
+		var calendar = document.getElementById("calendar");
+		var tdElems = calendar.getElementsByTagName("td");
+		var theOnes = [];
+		for (var i = 0; i < tdElems.length; i++) {
+			if ( tdElems[i].innerHTML == 1 ) {
+				theOnes.push(tdElems[i]);
+			}
+		}
+		unhighlightDays();
+		highlight(theOnes[0]);
+		return theOnes;
 
 	}
 
