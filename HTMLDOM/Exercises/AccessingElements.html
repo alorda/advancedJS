@@ -68,7 +68,10 @@
 	}
 
 	function allDays() {
-
+		var calendar = document.getElementById("calendar");
+		var allDays = calendar.getElementsByTagName("td");
+		highlight(allDays);
+		return allDays;
 	}
 
 	function firstDayOfMonth() {
