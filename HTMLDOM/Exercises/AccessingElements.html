@@ -7,17 +7,17 @@
 	.off {
 		color:#ccc;
 	}
-	
+
 	.weekend {
-		background-color:#ff9;	
+		background-color:#ff9;
 	}
-	
+
 	.clickable {
 		cursor:pointer;
 		color:#06f;
 		text-decoration:underline;
 	}
-	
+
 	.highlight {
 		background-color:#006;
 		color:#fff;
@@ -29,28 +29,28 @@
 		if (!nodes.length) { //make it an array
 			var nodes = [nodes];
 		}
-		
+
 		for (var i=0; i<nodes.length; i++) {
 			addClass(nodes[i],"highlight");
 		}
 	}
-	
+
 	function unhighlight(nodes) {
 		if (!nodes.length) { //make it an array
 			var nodes = [nodes];
 		}
-		
+
 		for (var i=0; i<nodes.length; i++) {
 			removeClass(nodes[i],"highlight");
 		}
 	}
-	
+
 	function unhighlightDays() {
 		var calendar = document.getElementById("calendar");
 		var days = calendar.getElementsByTagName("td");
 		unhighlight(days);
 	}
-	
+
 	function weekEndDays() {
 		var calendar = document.getElementById("calendar");
 		var weekEndDays = getElementsByClassName(calendar,"weekend");
@@ -58,19 +58,23 @@
 		highlight(weekEndDays);
 		return weekEndDays;
 	}
-	
-	function offDays() {
 
+	function offDays() {
+		var calendar = document.getElementById("calendar");
+		var offDays = getElementsByClassName(calendar, "off");
+		unhighlightDays();
+		highlight(offDays);
+		return offDays;
 	}
-	
+
 	function allDays() {
 
 	}
-	
+
 	function firstDayOfMonth() {
 
 	}
-	
+
 	function weekDays() {
 		var weekDays;
 		if ( document.querySelectorAll ) {
@@ -82,7 +86,7 @@
 		highlight(weekDays);
 		return weekDays;
 	}
-	
+
 	function weekDaysThisMonth() {
 
 	}
