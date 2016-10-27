@@ -78,6 +78,7 @@
 	function firstDayOfMonth() {
 		var calendar = document.getElementById("calendar");
 		var tdElems = calendar.getElementsByTagName("td");
+		console.log("array?", Array.isArray(tdElems));
 		var theOnes = [];
 		for (var i = 0; i < tdElems.length; i++) {
 			if ( tdElems[i].innerHTML == 1 ) {
@@ -110,6 +111,24 @@
 
 	function weekDaysThisMonth() {
 
+		//create empty array to receive days as we find them
+		var weekDaysThisMonth=[];
+
+		// start by getting all weekdays, regardless of month
+		var days=weekDays();
+		var i;
+		//loop through all the week days, if it does NOT have a css class of "off", then add the day to the weekDaysThisMonth array.
+		//Note that the push() method simply adds an element to an array
+		for (i=0; i<days.length; ++i) {
+			if ( !hasClassName(days[i],"off") ) {
+				weekDaysThisMonth.push(days[i]);
+			}
+		}
+		//now unhighlight all the days
+		unhighlightDays();
+		//and finally, highlight all the "weekDaysThisMonth"
+		highlight(weekDaysThisMonth);
+		return weekDaysThisMonth;
 	}
 </script>
 </head>
