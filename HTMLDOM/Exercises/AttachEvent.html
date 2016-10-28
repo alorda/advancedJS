@@ -10,12 +10,8 @@
 		var addButton = document.getElementById("addButton");
 		var subtractButton = document.getElementById("subtractButton");
 
-		/*
-			Write code so that...
-				- when addButton is clicked the addNumbers() function is called
-				- when subtractButton is clicked the subtractNumbers() function is called
-				- when either button is clicked the incrementProblems() function is called
-		*/
+		observeEvent(addButton, "click", addNumbers);
+		observeEvent(subtractButton, "click", subtractNumbers);
 	}
 
 	function addNumbers(e) {
@@ -25,6 +21,7 @@
 		var num2 = target.form.num2.value;
 		var result = Number(num1) + Number(num2);
 		target.form.result.value = result;
+		incrementProblems();
 	}
 
 	function subtractNumbers(e) {
@@ -34,6 +31,7 @@
 		var num2 = target.form.num2.value;
 		var result = num1 - num2;
 		target.form.result.value = result;
+		incrementProblems();
 	}
 
 	var numProbs=0;
