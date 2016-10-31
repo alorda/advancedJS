@@ -11,25 +11,26 @@
 		observeEvent(document.getElementById("ball"),"mousedown",hit,false);
 		observeEvent(document.getElementById("start"),"click",start,false);
 	});
-	
+
 	function miss() {
 		alert("Miss!");
 	}
-	
+
 	function hit(e) {
 		alert("Hit! Congrats!");
 		e = e || window.event;
+		console.log("window.event: ", window.event);
 		stopPropagation(e);
 		clearInterval(timer);
 	}
-	
+
 	function start() {
 		var ball = document.getElementById("ball");
 		ball.style.top="92px";
-		ball.style.left="92px";	
+		ball.style.left="92px";
 		timer=setInterval(function() { moveBall(ball); },20);
 	}
-	
+
 	function moveBall(ball) {
 		var x=2,y=2;
 		var left, top;
@@ -45,7 +46,7 @@
 			clearInterval(timer);
 			alert("Game over!");
 			ball.style.left="92px";
-			ball.style.top="92px"	
+			ball.style.top="92px"
 		}
 		ball.style.left = (left + x) + "px";
 		ball.style.top = (top + y) + "px";
@@ -57,6 +58,7 @@
 	<h1>Click the Ball</h1>
 	<div>
 		<button id="start">Start</button>
+		<span id="counter"></span> Clicks
 	</div>
 	<div id="field"><img id="ball" src="../Images/ball.gif" alt="Ball"></div>
 </body>
