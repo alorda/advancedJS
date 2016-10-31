@@ -12,12 +12,20 @@
 		observeEvent(document.getElementById("ball"), "mousedown", hit, false);
 	});
 
+	var clickCount = 0;
+	function clickCounter(){
+		clickCount++;
+		document.getElementById("counter").innerHTML = clickCount;
+	}
+
 	function miss() {
+		clickCounter();
 		alert("Miss!");
 	}
 
 	function hit(e) {
-		alert("Hit! Congrats!");
+		clickCounter();
+		alert("Congrats! You hit the ball in " + clickCount + " clicks!");
 		clearInterval(timer);
 		stopPropagation(e);
 	}
@@ -56,7 +64,7 @@
 	<h1>Click the Ball</h1>
 	<div>
 		<button id="start">Start</button>
-		<span id="counter"></span> Clicks
+		Clicks: <span id="counter"></span>
 	</div>
 	<div id="field"><img id="ball" src="../Images/ball.gif" alt="Ball"></div>
 </body>
